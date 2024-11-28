@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 06:08:05 by ael-khni          #+#    #+#             */
-/*   Updated: 2021/11/23 18:04:56 by ael-khni         ###   ########.fr       */
+/*   Updated: 2024/11/28 23:07:28 by hdazia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*get_next_line(int fd)
 {
 	static char	*tmp;
+	int BUFFER_SIZE = 44;
 	char		buff[BUFFER_SIZE + 1];
 	char		*line;
 	int			ret;
@@ -22,7 +23,7 @@ char	*get_next_line(int fd)
 
 	if (!tmp)
 		tmp = ft_strdup("");
-	ret = read(fd, buff, BUFFER_SIZE);
+	ret = read(fd, buff, BUFFER_SIZE);// hna sh7al 9rat lina read  db hna read 9rat o returnat sh7al men byte 9rat
 	while (ret >= 0)
 	{
 		buff[ret] = 0;
