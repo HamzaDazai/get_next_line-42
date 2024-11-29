@@ -48,80 +48,6 @@
 			"typeName": "page"
 		},
 		{
-			"id": "pointer:pointer",
-			"typeName": "pointer",
-			"x": 429.77144202814134,
-			"y": 247.5598567273139,
-			"lastActivityTimestamp": 1732832195888,
-			"meta": {}
-		},
-		{
-			"followingUserId": null,
-			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
-			"brush": null,
-			"scribbles": [],
-			"cursor": {
-				"type": "cross",
-				"rotation": 0
-			},
-			"isFocusMode": false,
-			"exportBackground": true,
-			"isDebugMode": false,
-			"isToolLocked": false,
-			"screenBounds": {
-				"x": 0,
-				"y": 0,
-				"w": 1043.333251953125,
-				"h": 1085.833251953125
-			},
-			"insets": [
-				false,
-				false,
-				true,
-				false
-			],
-			"zoomBrush": null,
-			"isGridMode": false,
-			"isPenMode": false,
-			"chatMessage": "",
-			"isChatting": false,
-			"highlightedUserIds": [],
-			"isFocused": true,
-			"devicePixelRatio": 2.4000000953674316,
-			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
-			"openMenus": [],
-			"isChangingStyle": false,
-			"isReadonly": false,
-			"meta": {},
-			"duplicateProps": null,
-			"id": "instance:instance",
-			"currentPageId": "page:page",
-			"typeName": "instance"
-		},
-		{
-			"editingShapeId": null,
-			"croppingShapeId": null,
-			"selectedShapeIds": [],
-			"hoveredShapeId": null,
-			"erasingShapeIds": [],
-			"hintingShapeIds": [],
-			"focusedGroupId": null,
-			"meta": {},
-			"id": "instance_page_state:page:page",
-			"pageId": "page:page",
-			"typeName": "instance_page_state"
-		},
-		{
-			"x": 101.8894878142039,
-			"y": 85.19534621017374,
-			"z": 0.8432202863337698,
-			"meta": {},
-			"id": "camera:page:page",
-			"typeName": "camera"
-		},
-		{
 			"x": 270.1792003264184,
 			"y": 45.57040029476843,
 			"rotation": 0,
@@ -168,8 +94,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -34.68294310286322,
-			"y": 270.0474691306561,
+			"x": -80.68294310286322,
+			"y": 282.0474691306561,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -499,8 +425,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 357.4266526737802,
-			"y": 62.72930929812884,
+			"x": 384.4266526737802,
+			"y": 78.72930929812884,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -518,173 +444,173 @@
 								"z": 0.5
 							},
 							{
-								"x": 0.54,
-								"y": -0.1,
+								"x": 0.41,
+								"y": -0.07,
 								"z": 0.5
 							},
 							{
-								"x": 0.77,
-								"y": -0.1,
+								"x": 0.58,
+								"y": -0.07,
 								"z": 0.5
 							},
 							{
-								"x": 8.17,
-								"y": 0.94,
+								"x": 6.15,
+								"y": 0.64,
 								"z": 0.5
 							},
 							{
-								"x": 20.39,
-								"y": 3.38,
+								"x": 15.35,
+								"y": 2.31,
 								"z": 0.5
 							},
 							{
-								"x": 34.12,
-								"y": 5.84,
+								"x": 25.69,
+								"y": 4,
 								"z": 0.5
 							},
 							{
-								"x": 53.14,
-								"y": 9.12,
+								"x": 40.01,
+								"y": 6.24,
 								"z": 0.5
 							},
 							{
-								"x": 72.9,
-								"y": 13.72,
+								"x": 54.88,
+								"y": 9.39,
 								"z": 0.5
 							},
 							{
-								"x": 88.14,
-								"y": 16.9,
+								"x": 66.35,
+								"y": 11.57,
 								"z": 0.5
 							},
 							{
-								"x": 103.45,
-								"y": 21.57,
+								"x": 77.88,
+								"y": 14.77,
 								"z": 0.5
 							},
 							{
-								"x": 110.39,
-								"y": 22.63,
+								"x": 83.11,
+								"y": 15.49,
 								"z": 0.5
 							},
 							{
-								"x": 112.45,
-								"y": 23.43,
+								"x": 84.66,
+								"y": 16.04,
 								"z": 0.5
 							},
 							{
-								"x": 112.9,
-								"y": 23.43,
+								"x": 84.99,
+								"y": 16.04,
 								"z": 0.5
 							},
 							{
-								"x": 113.35,
-								"y": 23.43,
+								"x": 85.33,
+								"y": 16.04,
 								"z": 0.5
 							},
 							{
-								"x": 113.57,
-								"y": 23.66,
+								"x": 85.5,
+								"y": 16.2,
 								"z": 0.5
 							},
 							{
-								"x": 113.8,
-								"y": 23.66,
+								"x": 85.67,
+								"y": 16.2,
 								"z": 0.5
 							},
 							{
-								"x": 114.47,
-								"y": 23.88,
+								"x": 86.18,
+								"y": 16.35,
 								"z": 0.5
 							},
 							{
-								"x": 114.92,
-								"y": 23.88,
+								"x": 86.52,
+								"y": 16.35,
 								"z": 0.5
 							},
 							{
-								"x": 116.23,
-								"y": 24.17,
+								"x": 87.5,
+								"y": 16.55,
 								"z": 0.5
 							},
 							{
-								"x": 118.06,
-								"y": 24.97,
+								"x": 88.88,
+								"y": 17.1,
 								"z": 0.5
 							},
 							{
-								"x": 118.96,
-								"y": 25.19,
+								"x": 89.56,
+								"y": 17.25,
 								"z": 0.5
 							},
 							{
-								"x": 119.19,
-								"y": 25.19,
+								"x": 89.73,
+								"y": 17.25,
 								"z": 0.5
 							},
 							{
-								"x": 119.86,
-								"y": 25.19,
+								"x": 90.23,
+								"y": 17.25,
 								"z": 0.5
 							},
 							{
-								"x": 120.31,
-								"y": 25.19,
+								"x": 90.57,
+								"y": 17.25,
 								"z": 0.5
 							},
 							{
-								"x": 127.27,
-								"y": 27.86,
+								"x": 95.81,
+								"y": 19.08,
 								"z": 0.5
 							},
 							{
-								"x": 134.21,
-								"y": 30.5,
+								"x": 101.04,
+								"y": 20.88,
 								"z": 0.5
 							},
 							{
-								"x": 139.65,
-								"y": 32.98,
+								"x": 105.13,
+								"y": 22.58,
 								"z": 0.5
 							},
 							{
-								"x": 140.33,
-								"y": 33.43,
+								"x": 105.64,
+								"y": 22.89,
 								"z": 0.5
 							},
 							{
-								"x": 142.16,
-								"y": 34.05,
+								"x": 107.02,
+								"y": 23.31,
 								"z": 0.5
 							},
 							{
-								"x": 142.38,
-								"y": 34.28,
+								"x": 107.19,
+								"y": 23.47,
 								"z": 0.5
 							},
 							{
-								"x": 142.83,
-								"y": 34.72,
+								"x": 107.53,
+								"y": 23.77,
 								"z": 0.5
 							},
 							{
-								"x": 143.5,
-								"y": 35.4,
+								"x": 108.03,
+								"y": 24.24,
 								"z": 0.5
 							},
 							{
-								"x": 144.41,
-								"y": 36.3,
+								"x": 108.72,
+								"y": 24.85,
 								"z": 0.5
 							},
 							{
-								"x": 145.43,
-								"y": 37.84,
+								"x": 109.48,
+								"y": 25.91,
 								"z": 0.5
 							},
 							{
-								"x": 145.65,
-								"y": 38.06,
+								"x": 109.65,
+								"y": 26.06,
 								"z": 0.5
 							}
 						]
@@ -829,8 +755,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 173.71563223989506,
-			"y": 168.91479762744265,
+			"x": 138.71563223989506,
+			"y": 170.91479762744265,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -934,7 +860,7 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 138.69364512855708,
+			"x": 100.69364512855708,
 			"y": 245.18180850153198,
 			"rotation": 0,
 			"isLocked": false,
@@ -1037,6 +963,82 @@
 			"parentId": "page:page",
 			"index": "aA8WY",
 			"typeName": "shape"
+		},
+		{
+			"id": "pointer:pointer",
+			"typeName": "pointer",
+			"x": 120.77973264859921,
+			"y": 209.19955971271227,
+			"lastActivityTimestamp": 1732839469024,
+			"meta": {}
+		},
+		{
+			"followingUserId": null,
+			"opacityForNextShape": 1,
+			"stylesForNextShape": {},
+			"brush": null,
+			"scribbles": [],
+			"cursor": {
+				"type": "move",
+				"rotation": 0
+			},
+			"isFocusMode": false,
+			"exportBackground": true,
+			"isDebugMode": false,
+			"isToolLocked": false,
+			"screenBounds": {
+				"x": 0,
+				"y": 0,
+				"w": 1062,
+				"h": 624
+			},
+			"insets": [
+				false,
+				false,
+				true,
+				false
+			],
+			"zoomBrush": null,
+			"isGridMode": false,
+			"isPenMode": false,
+			"chatMessage": "",
+			"isChatting": false,
+			"highlightedUserIds": [],
+			"isFocused": true,
+			"devicePixelRatio": 1,
+			"isCoarsePointer": false,
+			"isHoveringCanvas": true,
+			"openMenus": [],
+			"isChangingStyle": false,
+			"isReadonly": false,
+			"meta": {},
+			"duplicateProps": null,
+			"id": "instance:instance",
+			"currentPageId": "page:page",
+			"typeName": "instance"
+		},
+		{
+			"editingShapeId": null,
+			"croppingShapeId": null,
+			"selectedShapeIds": [
+				"shape:DRW3vO-ogm1WQuiYsJ04c"
+			],
+			"hoveredShapeId": null,
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:page",
+			"pageId": "page:page",
+			"typeName": "instance_page_state"
+		},
+		{
+			"x": 192.2202673514008,
+			"y": 121.80044028728773,
+			"z": 1,
+			"meta": {},
+			"id": "camera:page:page",
+			"typeName": "camera"
 		}
 	]
 }
