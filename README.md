@@ -123,23 +123,6 @@ The bonus section is designed to enhance the functionality of `get_next_line` by
   ```
   - `fd3`, `fd4`, and `fd5` must maintain independent reading positions.
   - The function must remember the leftover content for **each FD** across calls.
-
-- **How to Implement**:
-  - Use a data structure like a **linked list** or **array of structures** to associate each FD with its state.
-  - Example structure for tracking FD states:
-    ```c
-    typedef struct s_fd_state {
-        int fd;               // File descriptor
-        char *buffer;         // Leftover data for the FD
-        struct s_fd_state *next; // Pointer to the next FD's state
-    } t_fd_state;
-    ```
-  - When `get_next_line()` is called with a specific FD:
-    1. Check if an entry exists for the FD in the structure.
-    2. If it exists, use its state (e.g., leftover buffer).
-    3. If it doesn’t, create a new entry for that FD.
-    4. Free memory for FDs that are no longer being used (e.g., EOF reached).
-
 ---
 
 ### 3. **Organizing Bonus Files**
