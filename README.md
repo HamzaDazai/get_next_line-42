@@ -116,12 +116,3 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 
 4. **Can I use `libft`?**
    - No, external libraries are not allowed.
-
----
-
-## 📝 Author
-Add your name, GitHub profile, or other relevant details here.
-
----
-
-Let me know if you'd like any changes or additions!
