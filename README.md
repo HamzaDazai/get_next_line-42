@@ -87,21 +87,118 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 
 ---
 
-## 🏆 Bonus Objectives
-- Ensure smooth operation with multiple simultaneous file descriptors.
-- Achieve efficient memory handling and performance.
+## 🏆 Bonus Part (Detailed)
+
+The bonus section is designed to enhance the functionality of `get_next_line` by introducing advanced features. Let’s break down each requirement with practical examples and in-depth reasoning.
 
 ---
 
-## 📂 Submission and Evaluation
-1. Upload your project to the assigned Git repository.
-2. Verify file naming and adherence to the Norm.
-3. Ensure proper memory management and absence of leaks.
-4. Test your project rigorously:
-   - Vary buffer and line sizes.
-   - Use diverse test cases (e.g., standard input, regular files).
+### 1. **Using Only One Static Variable**
+- **Static Variable**:
+  - A static variable retains its value between function calls and is shared across all calls to that function.
+  - In this bonus, you must manage all required state (e.g., leftover data from previous reads) using just one static variable. 
+  - This means no global variables, arrays, or multiple static variables to track separate states.
+  
+- **Why It Matters**:
+  - The constraint forces you to design your code efficiently. You need to manage memory dynamically, handle edge cases, and ensure the state is preserved correctly for each file descriptor.
+
+- **Implementation Hints**:
+  - Store a pointer in the static variable to dynamically allocated memory for managing leftover or partial data after each read.
+  - Be mindful of freeing and reallocating memory when switching contexts.
 
 ---
+
+### 2. **Managing Multiple File Descriptors (FDs)**
+- **What Does It Mean?**:
+  - Normally, `get_next_line()` handles only one file descriptor at a time, so it tracks state (e.g., the last read position) for just that FD.
+  - With this bonus, the function must handle **multiple FDs simultaneously** without interference.
+
+- **Example**:
+  Suppose you’re reading three files:
+  ```c
+  char *line1 = get_next_line(fd3); // Reads line 1 from fd 3
+  char *line2 = get_next_line(fd4); // Reads line 1 from fd 4
+  char *line3 = get_next_line(fd5); // Reads line 1 from fd 5
+  char *line4 = get_next_line(fd3); // Reads line 2 from fd 3
+  ```
+  - `fd3`, `fd4`, and `fd5` must maintain independent reading positions.
+  - The function must remember the leftover content for **each FD** across calls.
+
+- **How to Implement**:
+  - Use a data structure like a **linked list** or **array of structures** to associate each FD with its state.
+  - Example structure for tracking FD states:
+    ```c
+    typedef struct s_fd_state {
+        int fd;               // File descriptor
+        char *buffer;         // Leftover data for the FD
+        struct s_fd_state *next; // Pointer to the next FD's state
+    } t_fd_state;
+    ```
+  - When `get_next_line()` is called with a specific FD:
+    1. Check if an entry exists for the FD in the structure.
+    2. If it exists, use its state (e.g., leftover buffer).
+    3. If it doesn’t, create a new entry for that FD.
+    4. Free memory for FDs that are no longer being used (e.g., EOF reached).
+
+---
+
+### 3. **Organizing Bonus Files**
+- To keep the mandatory and bonus parts separate, create:
+  - **`get_next_line_bonus.c`**:
+    - Contains the `get_next_line()` implementation with bonus features.
+  - **`get_next_line_bonus.h`**:
+    - Contains function prototypes and any additional structures for managing FDs.
+  - **`get_next_line_utils_bonus.c`**:
+    - Utility functions shared by the bonus implementation (e.g., memory handling, linked list management).
+- **Reason for Separation**:
+  - Clear distinction between mandatory and bonus functionality.
+  - Bonus features will only be evaluated if the mandatory part works perfectly.
+
+---
+
+### 4. **Common Challenges & Solutions**
+
+#### **Handling Dynamic Memory**
+- When you dynamically allocate memory (e.g., for leftover buffers), ensure you properly free it when:
+  1. The file descriptor is closed.
+  2. An error occurs.
+  3. The end of the file (EOF) is reached.
+
+#### **Edge Cases to Test**
+- **Single FD**:
+  - Reading a file with varying buffer sizes (`BUFFER_SIZE=1`, `BUFFER_SIZE=10000`).
+- **Multiple FDs**:
+  - Switching between FDs in random order, ensuring no cross-contamination of data.
+- **Empty or Short Files**:
+  - Test with empty files or files shorter than the buffer size.
+- **Error Handling**:
+  - Test invalid FDs, closed FDs, and unexpected conditions.
+
+---
+
+### 5. **Compiling and Running the Bonus**
+- Your Makefile should include a rule for the bonus:
+  ```Makefile
+  bonus:
+      cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line_bonus.c \
+      get_next_line_utils_bonus.c -o get_next_line_bonus
+  ```
+- Example usage:
+  ```bash
+  make bonus
+  ./get_next_line_bonus <input_file>
+  ```
+
+---
+
+### 6. **Key Insights**
+- Think of each FD as having its own "workspace" for storing leftover data. Your code must manage these workspaces dynamically and efficiently.
+- Managing multiple FDs introduces complexity but is a rewarding exercise in resource management and data structures.
+- Proper testing is critical to ensure robustness across diverse scenarios.
+
+---
+
+Would you like a specific example of code or further clarification?
 
 ## 🤔 FAQ
 
