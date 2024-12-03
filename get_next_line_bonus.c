@@ -6,7 +6,7 @@
 /*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:38:24 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/03 06:45:32 by hdazia           ###   ########.fr       */
+/*   Updated: 2024/12/03 20:23:32 by hdazia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,6 @@ void	*check_null(char **buffer, char **storing)
 		return (NULL);
 	}
 	return (*buffer);
-}
-char	*get_next_line(int fd)
-{
-	static char	*storing[1024];
-	char		*buffer;
-	char		*line;
-	int			read_return;
-
-    buffer = malloc((unsigned long)BUFFER_SIZE + 1);
-    if (!storing[fd])
-        storing[fd] = ft_strdup("");
-	if (check_null(&buffer,&storing[fd]) == NULL)
-		return (NULL);
-	read_return = read(fd, buffer, BUFFER_SIZE);
-	while (read_return >= 0)
-	{
-		buffer[read_return] = '\0';
-		storing[fd] = ft_strjoin(storing[fd], buffer);
-		if ((ft_find_newline(storing[fd])) != -1)
-			return (free(buffer),(ft_get_line(&storing[fd], &line, (ft_find_newline(storing[fd])))));
-		if (!read_return && !storing[fd][0])
-			break;
-		if (!read_return)
-			return (free(buffer),(ft_stored_string(&storing[fd], 0)));
-		read_return = read(fd, buffer, BUFFER_SIZE);
-	}
-	free(buffer);
-	return (free(storing[fd]), (storing[fd] = NULL), NULL);
 }
 
 int	ft_find_newline(const char *str)
@@ -92,4 +64,33 @@ char	*ft_stored_string(char **str, int place_nline)
 	free(*str);
 	*str = NULL;
 	return (remember);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*storing[1024];
+	char		*buffer;
+	char		*line;
+	int			read_return;
+
+	buffer = malloc((unsigned long)BUFFER_SIZE + 1);
+	if (!storing[fd])
+		storing[fd] = ft_strdup("");
+	if (check_null(&buffer, &storing[fd]) == NULL)
+		return (NULL);
+	read_return = read(fd, buffer, BUFFER_SIZE);
+	while (read_return >= 0)
+	{
+		buffer[read_return] = '\0';
+		storing[fd] = ft_strjoin(storing[fd], buffer);
+		if (ft_find_newline(storing[fd]) != -1)
+			return (free(buffer), ft_get_line(&storing[fd], &line,
+					ft_find_newline(storing[fd])));
+		if (!read_return && !storing[fd][0])
+			break ;
+		if (!read_return)
+			return (free(buffer), ft_stored_string(&storing[fd], 0));
+		read_return = read(fd, buffer, BUFFER_SIZE);
+	}
+	return (free(buffer), free(storing[fd]), (storing[fd] = NULL), NULL);
 }

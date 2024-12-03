@@ -6,7 +6,7 @@
 /*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:37:32 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/03 01:45:25 by hdazia           ###   ########.fr       */
+/*   Updated: 2024/12/03 20:47:46 by hdazia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

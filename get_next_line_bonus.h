@@ -6,7 +6,7 @@
 /*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:27:21 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/02 00:04:46 by hdazia           ###   ########.fr       */
+/*   Updated: 2024/12/03 20:16:40 by hdazia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ char	*ft_stored_string(char **str, int place_nline);
 char	*ft_get_line(char **storing, char **line, int place_nline);
 int		ft_find_newline(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:38:24 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/03 06:40:02 by hdazia           ###   ########.fr       */
+/*   Updated: 2024/12/03 20:47:30 by hdazia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	*check_null(char **buffer, char **storing)
 	}
 	return (*buffer);
 }
+
 char	*get_next_line(int fd)
 {
 	static char	*storing;
@@ -35,26 +36,26 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			read_return;
 
-    buffer = malloc((unsigned long)BUFFER_SIZE + 1);
-    if (!storing)
-        storing = ft_strdup("");
-	if (check_null(&buffer,&storing) == NULL)
+	buffer = malloc((size_t)BUFFER_SIZE + 1);
+	if (!storing)
+		storing = ft_strdup("");
+	if (check_null(&buffer, &storing) == NULL)
 		return (NULL);
 	read_return = read(fd, buffer, BUFFER_SIZE);
 	while (read_return >= 0)
 	{
 		buffer[read_return] = '\0';
 		storing = ft_strjoin(storing, buffer);
-		if ((ft_find_newline(storing)) != -1)
-		return (free(buffer),(ft_get_line(&storing, &line, (ft_find_newline(storing)))));
+		if (ft_find_newline(storing) != -1)
+			return (free(buffer),
+				ft_get_line(&storing, &line, ft_find_newline(storing)));
 		if (!read_return && !storing[0])
-			break;
+			break ;
 		if (!read_return)
-			return (free(buffer),(ft_stored_string(&storing, 0)));
+			return (free(buffer), ft_stored_string(&storing, 0));
 		read_return = read(fd, buffer, BUFFER_SIZE);
 	}
-	free(buffer);
-	return (free(storing), (storing = NULL), NULL);
+	return (free(buffer), free(storing), (storing = NULL), NULL);
 }
 
 int	ft_find_newline(const char *str)
