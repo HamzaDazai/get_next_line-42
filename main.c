@@ -6,7 +6,7 @@
 
 int main()
 {
-    int fd = open("foo.txt", O_RDONLY | O_CREAT);
+    int fd = open("ossssd.txt",O_CREAT | O_RDONLY ,0777);
     char *str = get_next_line(fd);
     printf("%s",str);
     char *str1 = get_next_line(fd);
