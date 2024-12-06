@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 20:38:24 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/03 20:23:32 by hdazia           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
 void	*check_null(char **buffer, char **storing)
@@ -29,7 +17,7 @@ void	*check_null(char **buffer, char **storing)
 	return (*buffer);
 }
 
-int	ft_find_newline(const char *str)
+int		ft_find(const char *str)
 {
 	int	i;
 
@@ -43,13 +31,14 @@ int	ft_find_newline(const char *str)
 	return (-1);
 }
 
-char	*ft_get_line(char **storing, char **line, int place_nline)
+char	*ft_get(char **storing, int place_nline)
 {
+	char	*line;
 	if (!*storing)
 		return (NULL);
-	*line = ft_substr(*storing, 0, place_nline + 1);
+	line = ft_substr(*storing, 0, place_nline + 1);
 	*storing = ft_stored_string(storing, place_nline + 1);
-	return (*line);
+	return (line);
 }
 
 char	*ft_stored_string(char **str, int place_nline)
@@ -68,29 +57,29 @@ char	*ft_stored_string(char **str, int place_nline)
 
 char	*get_next_line(int fd)
 {
-	static char	*storing[1024];
-	char		*buffer;
-	char		*line;
+	static char	*stord[10240];
+	char		*buff;
 	int			read_return;
 
-	buffer = malloc((unsigned long)BUFFER_SIZE + 1);
-	if (!storing[fd])
-		storing[fd] = ft_strdup("");
-	if (check_null(&buffer, &storing[fd]) == NULL)
+	buff = malloc((size_t)BUFFER_SIZE + 1);
+	if (!stord[fd])
+		stord[fd] = ft_strdup("");
+	if (check_null(&buff, &stord[fd]) == NULL)
 		return (NULL);
-	read_return = read(fd, buffer, BUFFER_SIZE);
+	read_return = read(fd, buff, BUFFER_SIZE);
 	while (read_return >= 0)
 	{
-		buffer[read_return] = '\0';
-		storing[fd] = ft_strjoin(storing[fd], buffer);
-		if (ft_find_newline(storing[fd]) != -1)
-			return (free(buffer), ft_get_line(&storing[fd], &line,
-					ft_find_newline(storing[fd])));
-		if (!read_return && !storing[fd][0])
+		buff[read_return] = '\0';
+		stord[fd] = ft_strjoin(stord[fd], buff);
+		if (!stord[fd])
+			break;
+		if (ft_find(stord[fd]) != -1)
+			return (free(buff), ft_get(&stord[fd], ft_find(stord[fd])));
+		if (!read_return && !stord[fd][0])
 			break ;
 		if (!read_return)
-			return (free(buffer), ft_stored_string(&storing[fd], 0));
-		read_return = read(fd, buffer, BUFFER_SIZE);
+			return (free(buff), ft_stored_string(&stord[fd], 0));
+		read_return = read(fd, buff, BUFFER_SIZE);
 	}
-	return (free(buffer), free(storing[fd]), (storing[fd] = NULL), NULL);
+	return (free(buff), free(stord[fd]), (stord[fd] = NULL), NULL);
 }
