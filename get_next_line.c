@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdazia <hdazia@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 20:38:24 by hdazia            #+#    #+#             */
-/*   Updated: 2024/12/03 20:47:30 by hdazia           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 void	*check_null(char **buffer, char **storing)
@@ -29,36 +17,7 @@ void	*check_null(char **buffer, char **storing)
 	return (*buffer);
 }
 
-char	*get_next_line(int fd)
-{
-	static char	*storing;
-	char		*buffer;
-	char		*line;
-	int			read_return;
-
-	buffer = malloc((size_t)BUFFER_SIZE + 1);
-	if (!storing)
-		storing = ft_strdup("");
-	if (check_null(&buffer, &storing) == NULL)
-		return (NULL);
-	read_return = read(fd, buffer, BUFFER_SIZE);
-	while (read_return >= 0)
-	{
-		buffer[read_return] = '\0';
-		storing = ft_strjoin(storing, buffer);
-		if (ft_find_newline(storing) != -1)
-			return (free(buffer),
-				ft_get_line(&storing, &line, ft_find_newline(storing)));
-		if (!read_return && !storing[0])
-			break ;
-		if (!read_return)
-			return (free(buffer), ft_stored_string(&storing, 0));
-		read_return = read(fd, buffer, BUFFER_SIZE);
-	}
-	return (free(buffer), free(storing), (storing = NULL), NULL);
-}
-
-int	ft_find_newline(const char *str)
+int		ft_find(const char *str)
 {
 	int	i;
 
@@ -72,13 +31,14 @@ int	ft_find_newline(const char *str)
 	return (-1);
 }
 
-char	*ft_get_line(char **storing, char **line, int place_nline)
+char	*ft_get(char **storing, int place_nline)
 {
+	char	*line;
 	if (!*storing)
 		return (NULL);
-	*line = ft_substr(*storing, 0, place_nline + 1);
+	line = ft_substr(*storing, 0, place_nline + 1);
 	*storing = ft_stored_string(storing, place_nline + 1);
-	return (*line);
+	return (line);
 }
 
 char	*ft_stored_string(char **str, int place_nline)
@@ -93,4 +53,33 @@ char	*ft_stored_string(char **str, int place_nline)
 	free(*str);
 	*str = NULL;
 	return (remember);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*stord;
+	char		*buff;
+	int			read_return;
+
+	buff = malloc((size_t)BUFFER_SIZE + 1);
+	if (!stord)
+		stord = ft_strdup("");
+	if (check_null(&buff, &stord) == NULL)
+		return (NULL);
+	read_return = read(fd, buff, BUFFER_SIZE);
+	while (read_return >= 0)
+	{
+		buff[read_return] = '\0';
+		stord = ft_strjoin(stord, buff);
+		if (!stord)
+			break;
+		if (ft_find(stord) != -1)
+			return (free(buff), ft_get(&stord, ft_find(stord)));
+		if (!read_return && !stord[0])
+			break ;
+		if (!read_return)
+			return (free(buff), ft_stored_string(&stord, 0));
+		read_return = read(fd, buff, BUFFER_SIZE);
+	}
+	return (free(buff), free(stord), (stord = NULL), NULL);
 }
