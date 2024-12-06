@@ -1,22 +1,22 @@
+#include "stdio.h"
 #include "get_next_line.h"
+#include "unistd.h"
+#include "fcntl.h"
 
-#include <fcntl.h>
-#include <stdio.h>
+void ll(){
+    system("leaks a.out");
+}
 
+int main(){
+    atexit(ll);
+    int fd = open("get_next_line.c", O_RDONLY);
+    char *s = NULL;
 
-int main()
-{
-    int fd = open("ossssd.txt",O_CREAT | O_RDONLY ,0777);
-    char *str = get_next_line(fd);
-    printf("%s",str);
-    char *str1 = get_next_line(fd);
-    printf("%s",str1);
-    char *str2 = get_next_line(fd);
-    printf("%s",str2);
-    char *str3 = get_next_line(fd);
-    printf("%s",str3);
-    char *str33 = get_next_line(fd);
-    printf("%s",str33);
-    char *str5= get_next_line(fd);
-    printf("%s",str5);
+    while ((s = get_next_line(fd)) != NULL)
+    {
+        printf("%s", s);
+        free(s);
+        break;
+    }
+    return (0);
 }
