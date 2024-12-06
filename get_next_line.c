@@ -59,7 +59,7 @@ char	*get_next_line(int fd)
 {
 	static char	*stord;
 	char		*buff;
-	int			read_return;
+	ssize_t			read_return;
 
 	buff = malloc((size_t)BUFFER_SIZE + 1);
 	if (!stord)
