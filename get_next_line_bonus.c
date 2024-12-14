@@ -57,7 +57,7 @@ char	*ft_stored_string(char **str, int place_nline)
 
 char	*get_next_line(int fd)
 {
-	static char	*stord[10240];
+	static char	*stord[OPEN_MAX];
 	char		*buff;
 	int			read_return;
 
